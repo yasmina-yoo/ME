@@ -1,4 +1,3 @@
-<?php require_once "traitement.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -33,7 +32,7 @@
                     <a href="#projets" class="button">
                         Découvrir mes projets
                     </a>
-                    <a href="#button" class="button contact-button">
+                    <a href="#" class="button contact-button">
                         Me contacter
                     </a>
                 </div>
@@ -61,39 +60,30 @@
             <p class="section-description">
                 Découvrez quelques projets et idées sur lesquels je travaille.
             </p>
-           
-<div class="projects-list">
-
-    <?php foreach ($publishedProjects as $project): ?>
-
-        <article class="card">
-
-            <div class="card-content">
-
-                <p class="category">
-                    <?= htmlspecialchars($project["category"]) ?>
-                </p>
-
-                <h3>
-                    <?= htmlspecialchars($project["title"]) ?>
-                </h3>
-
-                <p>
-                    <?= htmlspecialchars($project["description"]) ?>
-                </p>
-
-                <a href="<?= htmlspecialchars($project["link"]) ?>">
-                    Voir le projet →
-                </a>
-
+            <div class="projects-list">
+                <?php foreach ($projets as $projet){?>
+                <article class="card">
+                    <div class="card-content">
+                        <p class="category">
+                            <?= $projet ['categorie']; ?>
+                        </p>
+                        <h3> 
+                            <?= $projet ['nom']; ?>
+                        </h3>
+                        <p>
+                           <?= $projet ['description']; ?>
+                        </p>
+                        <?php if ($projet ['disponible']){?>
+                        <a href="#">
+                            Voir le projet →
+                        </a>
+                        <?php } else {?>
+                        <p> projet en cours</p>
+                        <?php } ?>
+                    </div>
+                </article>
+               <?php }?>
             </div>
-
-        </article>
-
-    <?php endforeach; ?>
-
-</div>
-
         </section>
     </main>
     <footer class="footer">
